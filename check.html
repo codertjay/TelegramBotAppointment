@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>Austrian appointment system - Choose appointment</title>
+
+    <link href="https://appointment.bmeia.gv.at/Content/themes/base/all.css" rel="stylesheet" type="text/css" />
+    <link href="https://appointment.bmeia.gv.at/Content/Site.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://appointment.bmeia.gv.at/Scripts/jquery-3.6.3.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="page">
+    <div id="header">
+        <table width="100%" class="no-border">
+            <tr>
+                <td valign="top"><h1>Austrian appointment system</h1></td>
+                <td align="right" valign="top">
+                    <img src="https://appointment.bmeia.gv.at/img/ABUJA.jpg" alt="ABUJA" width="300px" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="main">
+
+
+        <h2>Appointments available for "Verification /Legalization", 1 Person(s):</h2>
+
+        <form action="/HomeWeb/Scheduler" method="post"><input id="Language" name="Language" type="hidden" value="en" /><input id="Office" name="Office" type="hidden" value="ABUJA" /><input data-val="true" data-val-number="The field CalendarId must be a number." data-val-range="Field must not be empty" data-val-range-max="2147483647" data-val-range-min="1" data-val-required="The CalendarId field is required." id="CalendarId" name="CalendarId" type="hidden" value="5597026" /><input data-val="true" data-val-number="The field PersonCount must be a number." data-val-range="Only numbers between 1 and 100 are allowed" data-val-range-max="100" data-val-range-min="1" data-val-required="The PersonCount field is required." id="PersonCount" name="PersonCount" type="hidden" value="1" /><input data-val="true" data-val-required="The Monday field is required." id="Monday" name="Monday" type="hidden" value="4/8/2024 12:00:00 AM" /> <table class="no-border">
+            <tr>
+                <td>
+                    Week 4/8/2024 - 4/14/2024
+                </td>
+                <td>
+                    <input type="submit" name="Command" value="Week before" />
+                </td>
+            </tr>
+        </table>
+            <table class="no-border">
+                <tr>
+                    <td valign="top">
+                        <table class="no-border">
+                            <thead><tr><th>Wed, 4/10/2024</th></tr></thead>
+                            <tr><td align="center">
+                                <label for="scheduler_4/10/2024 8:20:00 AM">08:20</label>
+                                <input id="scheduler_4/10/2024 8:20:00 AM" name="Start" type="radio" value="4/10/2024 8:20:00 AM" />
+                            </td></tr>
+                            <tr><td align="center">
+                                <label for="scheduler_4/10/2024 8:40:00 AM">08:40</label>
+                                <input id="scheduler_4/10/2024 8:40:00 AM" name="Start" type="radio" value="4/10/2024 8:40:00 AM" />
+                            </td></tr>
+                            <tr><td align="center">
+                                <label for="scheduler_4/10/2024 9:00:00 AM">09:00</label>
+                                <input id="scheduler_4/10/2024 9:00:00 AM" name="Start" type="radio" value="4/10/2024 9:00:00 AM" />
+                            </td></tr>
+                            <tr><td align="center">
+                                <label for="scheduler_4/10/2024 9:20:00 AM">09:20</label>
+                                <input id="scheduler_4/10/2024 9:20:00 AM" name="Start" type="radio" value="4/10/2024 9:20:00 AM" />
+                            </td></tr>
+                            <tr><td align="center">
+                                <label for="scheduler_4/10/2024 9:40:00 AM">09:40</label>
+                                <input id="scheduler_4/10/2024 9:40:00 AM" name="Start" type="radio" value="4/10/2024 9:40:00 AM" />
+                            </td></tr>
+                            <tr><td align="center">
+                                <label for="scheduler_4/10/2024 10:40:00 AM">10:40</label>
+                                <input id="scheduler_4/10/2024 10:40:00 AM" name="Start" type="radio" value="4/10/2024 10:40:00 AM" />
+                            </td></tr>
+                            <tr><td align="center">
+                                <label for="scheduler_4/10/2024 11:20:00 AM">11:20</label>
+                                <input id="scheduler_4/10/2024 11:20:00 AM" name="Start" type="radio" value="4/10/2024 11:20:00 AM" />
+                            </td></tr>
+                            <tr><td align="center">
+                                <label for="scheduler_4/10/2024 11:40:00 AM">11:40</label>
+                                <input id="scheduler_4/10/2024 11:40:00 AM" name="Start" type="radio" value="4/10/2024 11:40:00 AM" />
+                            </td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" name="Command" value="Back" />
+            <input type="submit" name="Command" value="Next" />
+        </form>
+    </div>
+</div>
+</body>
+</html>
