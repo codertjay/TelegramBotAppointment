@@ -1,0 +1,19 @@
+[Unit]
+Description=Telegram Bot Service
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/root/TelegramBotAppointment
+ExecStart=/root/TelegramBotAppointment/venv/bin/python3 /root/TelegramBotAppointment/main.py
+Restart=always
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=3
+# Uncomment the next line if you want to log standard output and error to a file
+StandardOutput=/var/log/telegram_bot.log
+StandardError=/var/log/telegram_bot_error.log
+
+[Install]
+WantedBy=multi-user.target
