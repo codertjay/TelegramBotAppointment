@@ -23,6 +23,8 @@ class Appointment:
 
         self.options = webdriver.ChromeOptions()
         self.options.add_argument('headless')
+        self.options.add_argument('--no-sandbox')
+        self.options.add_argument('--disable-dev-shm-usage')
         self.options.add_experimental_option("detach", True)
         self.options.add_experimental_option("excludeSwitches", ['enable-logging'])
 
@@ -113,7 +115,6 @@ class Appointment:
                 Appointment found between {start_date_str} and {end_date_str} in
                  {days_difference} days and current date is {datetime.now().strftime('%m/%d/%Y')}"""
 
-                # asyncio.run(send_message_on_telegram(message))
                 # Check if the start date is within the next 60 days
                 if days_difference <= config("APPOINTMENT_DAYS", cast=int, default=60):
                     asyncio.run(send_message_on_telegram(message))
@@ -132,6 +133,7 @@ class AppointmentScheduler:
 
     def run_appointment_process(self):
         try:
+            print("running")
             self.bot.land_first_page()
             self.bot.click_on_state()
             self.bot.click_on_reservation()
