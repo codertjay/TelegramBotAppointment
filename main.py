@@ -121,8 +121,9 @@ class Appointment:
                     asyncio.run(send_message_on_telegram(message))
                     return True
             except Exception as a:
-                message = f"Error {a}"
-                asyncio.run(send_message_on_telegram(message))
+                pass
+                # message = f"Error {a}"
+                # asyncio.run(send_message_on_telegram(message))
 
         # If no matching date range is found within the next 60 days
         return False
