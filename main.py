@@ -114,7 +114,7 @@ class Appointment:
                 message = f"""
                 Appointment found between {start_date_str} and {end_date_str} in
                  {days_difference} days and current date is {datetime.now().strftime('%m/%d/%Y')}"""
-
+                asyncio.run(send_message_on_telegram(message))
                 # Check if the start date is within the next 60 days
                 if days_difference <= config("APPOINTMENT_DAYS", cast=int, default=60):
                     asyncio.run(send_message_on_telegram(message))
