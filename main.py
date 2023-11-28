@@ -93,7 +93,10 @@ class Appointment:
         next_button = self.driver.find_element(by=By.CSS_SELECTOR, value='input[value="Next"]')
         next_button.click()
 
-    def is_appointment_in_next_sixty_days(self):
+    def is_appointment_in_next_sixty_days(self, send_current_date=False):
+        if send_current_date:
+            oneHourMessage = f"\n For One Hour Time frame {datetime.now().time()}"
+            asyncio.run(send_message_on_telegram(oneHourMessage))
         # Locate all table cells (td) containing the text "Week"
         week_cells = self.driver.find_elements(By.XPATH, '//td[contains(text(), "Week")]')
 
@@ -110,17 +113,15 @@ class Appointment:
 
                 # Calculate the difference in days between the start date and today
                 days_difference = (start_date - datetime.now()).days
-
-                message = f"""
-                Appointment found between {start_date_str} and {end_date_str} in
-                 {days_difference} days and current date is {datetime.now().strftime('%m/%d/%Y')}"""
-                # asyncio.run(send_message_on_telegram("message"))
                 # Check if the start date is within the next 60 days
                 if days_difference <= config("APPOINTMENT_DAYS", cast=int, default=60):
+                    message = f"""
+                        Appointment found between {start_date_str} and {end_date_str} in
+                         {days_difference} days and current date is {datetime.now().strftime('%m/%d/%Y')}"""
                     asyncio.run(send_message_on_telegram(message))
                     return True
             except Exception as a:
-                message = f"an error occurred in getting the date {a}"
+                message = f"Error {a}"
                 asyncio.run(send_message_on_telegram(message))
 
         # If no matching date range is found within the next 60 days
@@ -143,12 +144,20 @@ class AppointmentScheduler:
         except Exception as a:
             print(a)
 
+    def run_one_hour_time(self):
+        try:
+            print("One hour time running")
+            self.bot.is_appointment_in_next_sixty_days(send_current_date=True)
+        except Exception as a:
+            print(a)
+
 
 # Create an instance of AppointmentScheduler
 scheduler = AppointmentScheduler()
 
 # Schedule the job to run every 5 minutes
 schedule.every(1).minutes.do(scheduler.run_appointment_process)
+schedule.every(2).minutes.do(scheduler.run_one_hour_time)
 
 while True:
     schedule.run_pending()
