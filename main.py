@@ -158,7 +158,7 @@ scheduler = AppointmentScheduler()
 
 # Schedule the job to run every 5 minutes
 schedule.every(1).minutes.do(scheduler.run_appointment_process)
-schedule.every(6).hour.do(scheduler.run_one_hour_time)
+schedule.every(6).hours.do(scheduler.run_one_hour_time)
 
 while True:
     schedule.run_pending()
